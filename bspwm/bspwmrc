@@ -1,14 +1,12 @@
 #! /bin/sh
 
 # TODO(move this to a bash script that checks wheter devices are plugged in or not)
-xrandr --output HDMI-0 --primary --auto --output DP-1 --auto --left-of HDMI-0
+# xrandr --output HDMI-0 --primary --auto --output DP-1 --auto --left-of HDMI-0
 
 nitrogen --restore &
 picom &
-
-$HOME/.config/polybar/launch.sh
-
 pgrep -x sxhkd > /dev/null || sxhkd &
+$HOME/.config/polybar/launch.sh
 
 bspc monitor HDMI-0 -d 4 5 6
 bspc monitor DP-1 -d 1 2 3

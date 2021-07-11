@@ -29,13 +29,30 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/ddvlzsz]
-;monitor = ${env:MONITOR:HDMI-1} width = 99%
-width = 99%
+[bar/top-2]
+monitor = HDMI-0
+modules-left = bspwm
+width = 99.15%
 height = 27
 offset-x = 0.45%
 offset-y = 0.75%
-; radius = 6.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3
+line-color = #f00
+border-size = 0
+border-color = #00000000
+padding-left = 0
+padding-right = 4
+font-0 = "JetBrainsMono:size=9;2"
+
+[bar/top-1]
+width = 99%
+height = 27
+offset-x = 0.45%
+offset-y = 0.70%
 fixed-center = true
 
 background = ${colors.background}
@@ -46,19 +63,16 @@ border-size = 0
 border-color = #00000000
 
 padding-left = 0
-padding-right = 4
+padding-right = 0
 
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "Noto Sans":pixelsize=10;2
-font-1 = "Material Icons:size=12;3"
-font-2 = "DroidSansMono Nerd Font:size=12;3"
-font-3 = "Unifont:pixelsize=10;2"
-font-4 = "Wuncon Siji:pixelsize=10;2"
+font-0 = "JetBrainsMono:size=8;3"
 
 modules-left = bspwm
 modules-center = xwindow
+# modules-right = filesystem pulseaudio memory cpu date powermenu
 modules-right = filesystem pulseaudio memory cpu date powermenu
 
 ; tray-position = none
@@ -79,7 +93,7 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-
+# 
 ;label-mounted = %{F#0a81f5}%mountpoint%%{F-}:   %free%
 label-mounted =   %free%
 label-unmounted = %mountpoint% not mounted
@@ -98,32 +112,38 @@ ws-icon-5 = 5;
 ws-icon-6 = 6;
 type = internal/bspwm
 
-; label-monitor = %icon%
-label-focused = %icon%  
-label-focused-underline= ${colors.primary}
-label-focused-padding = 4
-label-occupied = %icon%
-label-occupied-padding = 4
+format = <label-state>
 
-label-urgent = %icon%!
+label-monitor= %name%
+
+; label-monitor = %icon%
+label-focused = %name%  
+label-focused-background = ${colors.focused}
+label-focused-foreground = ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %name%
+label-occupied-padding = 2
+
+label-urgent = %name%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %icon%
+label-empty = %name%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+# format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "   " 
+# format-prefix = "   " 
 ; TODO white
 format-prefix-foreground = ${colors.foreground}
 label = %mb_used%
@@ -135,7 +155,7 @@ interval = 5
 date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
-format-prefix = "  "
+# format-prefix = " " 
 format-prefix-foreground = ${colors.foreground}
 label = %date% %time%
 
@@ -143,8 +163,8 @@ label = %date% %time%
 type = internal/pulseaudio
 
 ; format-volume = <label-volume> <bar-volume>
-format-volume = <label-volume>
-label-volume =    %percentage%% 
+format-volume = <label-volume> <bar-volume>
+label-volume = %percentage%% 
 label-volume-foreground = ${root.foreground}
 
 label-muted =  muted

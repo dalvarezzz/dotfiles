@@ -8,9 +8,9 @@ super + Return
 
 # program launcher
 super + @space
-	dmenu_run
+	rofi -show window
 
-super + i
+super + shift + i
 	firefox
 
 # make sxhkd reload its configuration files:
@@ -30,7 +30,8 @@ super + {_,shift + }w
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
-# TODO(test)
+# monocle layout set every leaf of the current node sequentially.
+# Default navigation is bspc node -f next|prev
 super + m
 	bspc desktop -l next
 
@@ -48,10 +49,15 @@ super + g
 #
 
 # set the window state
+# pseudo_tiled: floating tiled
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
+# marked: useful for deferred actions
+# locked: can't be closed
+# sticky: will stay in the desktop of the focused monitor
+# private: keeps its position and size
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
@@ -60,24 +66,25 @@ super + ctrl + {m,x,y,z}
 #
 
 # focus the node in the given direction
-# TODO(test)
+# if swift is press the nodes will be swaped
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-# TODO(test)
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+super + {p,b}
+	bspc node -f @{parent,brother}
 
 # focus the next/previous window in the current desktop
-# TODO(test)
+# Useful when combined with monocle layout, as it let you iterate
+# over the desktop's nodes
 super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
-# TODO(test)
-super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
+# TODO(test usage)
+# super + bracket{left,right}
+# bspc desktop -f {prev,next}.local
+#
 
 # focus the last node/desktop
 super + {grave,Tab}
@@ -118,14 +125,26 @@ super + ctrl + shift + space
 #
 
 # expand a window by moving one of its side outward
-# TODO(test if alt is fine or we should use shift, same as xmonad)
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
-# TODO(test)
 super + alt + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+#
+# Volume managment
+#
+
+# volume control
+XF86AudioRaiseVolume
+  pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+XF86AudioLowerVolume
+  pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+XF86AudioMute
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # move a floating window
 super + {Left,Down,Up,Right}
