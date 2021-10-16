@@ -29,26 +29,28 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/top-2]
-monitor = HDMI-0
-modules-left = bspwm
-width = 99.15%
-height = 27
-offset-x = 0.45%
-offset-y = 0.75%
-fixed-center = true
+; [bar/top-2]
+; monitor = HDMI-0
+; modules-left = bspwm
+; width = 99.15%
+; height = 27
+; offset-x = 0.45%
+; offset-y = 0.75%
+; fixed-center = true
 
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size = 3
-line-color = #f00
-border-size = 0
-border-color = #00000000
-padding-left = 0
-padding-right = 4
-font-0 = "JetBrainsMono:size=9;2"
+; background = ${colors.background}
+; foreground = ${colors.foreground}
+; line-size = 3
+; line-color = #f00
+; border-size = 0
+; border-color = #00000000
+; padding-left = 0
+; padding-right = 4
+; font-0 = "JetBrainsMono:size=9;2"
 
 [bar/top-1]
+; monitor = DP-1
+enable-ipc = true
 width = 99%
 height = 27
 offset-x = 0.45%
@@ -72,8 +74,7 @@ font-0 = "JetBrainsMono:size=8;3"
 
 modules-left = bspwm
 modules-center = xwindow
-# modules-right = filesystem pulseaudio memory cpu date powermenu
-modules-right = filesystem pulseaudio memory cpu date powermenu
+modules-right = filesystem pulseaudio memory cpu date capslock
 
 ; tray-position = none
 ; tray-padding = 2
@@ -213,6 +214,14 @@ menu-2-0 = power off
 menu-2-0-exec = poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/capslock]
+type = custom/ipc
+hook-0 = check_caplock
+format-underline = ${colors.secondary}
+format-background = ${colors.secondary}
+format-padding = 1
+initial = 1
 
 [settings]
 screenchange-reload = true

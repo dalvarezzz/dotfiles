@@ -2,7 +2,6 @@ set nocompatible
 set encoding=utf-8
 set wildmenu
 set number
-set relativenumber
 set showcmd
 
 syntax on
@@ -34,7 +33,6 @@ set updatetime=300
 set cmdheight=2
 set shortmess+=c
 
-colorscheme darcula
 set termguicolors
 
 call plug#begin('~/.config/nvim/plugged')
@@ -49,6 +47,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'vimwiki/vimwiki'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'tpope/vim-commentary' "https://github.com/tpope/vim-commentary
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 " Set it by hand, this is either overwritten by vim itself or vim go
@@ -88,6 +87,10 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types= 1
 let g:go_auto_type_info = 1
+
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark=1
+autocmd vimenter * ++nested colorscheme gruvbox
 
 " coc configs
 inoremap <silent><expr> <c-.> coc#refresh()

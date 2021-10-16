@@ -2,13 +2,16 @@
 # wm independent hotkeys
 #
 
+@Caps_Lock
+  polybar-msg hook capslock 1
+
 # terminal emulator
 super + Return
-	alacritty
+ 	alacritty
 
 # program launcher
-super + @space
-	rofi -show window
+super + {_, shift+} @space
+  rofi -show {window,drun} -no-lazy-grab -modi {window,drun} -theme ~/.config/rofi/launchers/misc/gnome_do
 
 super + shift + i
 	firefox
@@ -17,29 +20,25 @@ super + shift + i
 super + Escape
 	pkill -USR1 -x sxhkd
 
-#
-# bspwm hotkeys
-#
 
 # quit/restart bspwm
 super + shift + {q,r}
-	bspc {quit,wm -r}
-
-# close and kill
+ 	bspc {quit,wm -r}
+#
+# # close and kill
 super + {_,shift + }w
 	bspc node -{c,k}
-
+ 
 # alternate between the tiled and monocle layout
 # monocle layout set every leaf of the current node sequentially.
 # Default navigation is bspc node -f next|prev
 super + m
 	bspc desktop -l next
-
+ 
 # send the newest marked node to the newest preselected node
-# TODO
 super + y
-	bspc node newest.marked.local -n newest.!automatic.local
-
+	bspc node newest.marked -n focused
+ 
 # swap the current node and the biggest window
 super + g
 	bspc node -s biggest.window
@@ -47,19 +46,22 @@ super + g
 #
 # state/flags
 #
-
+ 
 # set the window state
 # pseudo_tiled: floating tiled
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-# marked: useful for deferred actions
 # locked: can't be closed
 # sticky: will stay in the desktop of the focused monitor
 # private: keeps its position and size
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
+super + ctrl + {x,y,z}
+	bspc node -g {locked,sticky,private}
+
+# marked: useful for deferred actions
+super + q
+  bspc node -g marked
 
 #
 # focus/swap
@@ -69,33 +71,34 @@ super + ctrl + {m,x,y,z}
 # if swift is press the nodes will be swaped
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
-
-# focus the node for the given path jump
-super + {p,b}
-	bspc node -f @{parent,brother}
+ 
+# # focus the node for the given path jump
+# super + {p,b}
+# 	bspc node -f @{parent,brother}
 
 # focus the next/previous window in the current desktop
 # Useful when combined with monocle layout, as it let you iterate
 # over the desktop's nodes
 super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
-
-# focus the next/previous desktop in the current monitor
-# TODO(test usage)
-# super + bracket{left,right}
-# bspc desktop -f {prev,next}.local
-#
+ 
+# focus the next/previous occupied desktop in the current monitor
+super + bracket{left,right}
+  bspc desktop -f {prev,next}.local.occupied
 
 # focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
+super + period
+	bspc monitor -f last
 
+super + o
+  bspc desktop -f last
+ 
 # focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
-
+# super + {o,i}
+#  	bspc wm -h off; \
+#  	bspc node {older,newer} -f; \
+#  	bspc wm -h on
+ 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
@@ -148,4 +151,4 @@ XF86AudioMute
 
 # move a floating window
 super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+  bspc node -v {-20 0,0 20,0 -20,20 0}
