@@ -17,52 +17,25 @@
 ;==========================================================
 
 [colors]
-background = #AF000000
-; background of focused tab
+background = #ca000000
 background-alt = #444
-; text color of focused tab
 foreground = #dfdfdf
-; text color of non focused tabs
 foreground-alt = #555
-; padding above focused tab
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-; [bar/top-2]
-; monitor = HDMI-0
-; modules-left = bspwm
-; width = 99.15%
-; height = 27
-; offset-x = 0.45%
-; offset-y = 0.75%
-; fixed-center = true
-
-; background = ${colors.background}
-; foreground = ${colors.foreground}
-; line-size = 3
-; line-color = #f00
-; border-size = 0
-; border-color = #00000000
-; padding-left = 0
-; padding-right = 4
-; font-0 = "JetBrainsMono:size=9;2"
-
 [bar/top-1]
-; monitor = DP-1
 enable-ipc = true
-width = 99%
-height = 27
-offset-x = 0.45%
-offset-y = 0.70%
+width = 100%
+height = 30
 fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
-line-size = 3
-line-color = #f00
-border-size = 0
-border-color = #00000000
+
+wm-restack = bspwm
+cursor-click = pointer
 
 padding-left = 0
 padding-right = 0
@@ -70,41 +43,38 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "JetBrainsMono:size=8;3"
+font-0 = "JetBrainsMono:style=Regular:size=8;3"
+font-1 = "Font Awesome 5 Pro:style=Regular:size=8:antialias=true;2"
+font-2 = "Font Awesome 5 Pro:style=Solid:size=10:antialias=true;2"
+font-3 = "Font Awesome 5 Pro:style=Solid:size=8:antialias=true;2"
+font-4 = "Font Awesome 5 Duotone:size=10:antialias=true;2"
+font-5 = "JetBrainsMono:style=Bold:size=8;3"
+font-6 = "Feather:style=Regular:size=10;3"
+
 
 modules-left = bspwm
-modules-center = xwindow
-modules-right = filesystem pulseaudio memory cpu date capslock
+modules-center = date
+modules-right = filesystem pulseaudio memory cpu powermenu bluetooth xkeyboard
 
-; tray-position = none
-; tray-padding = 2
-tray-background = #0063ff
-
-wm-restack = bspwm
-
-cursor-click = pointer
-;cursor-scroll = ns-resize
-
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
+[module/capslock]
+type = custom/ipc
+hook-0 = check_caplock
+format-underline = ${colors.secondary}
+format-background = ${colors.secondary}
+format-padding = 1
+initial = 1
 
 [module/filesystem]
 type = internal/fs
 interval = 25
 
 mount-0 = /
-# 
-;label-mounted = %{F#0a81f5}%mountpoint%%{F-}:   %free%
-label-mounted =   %free%
+label-mounted = %{T4} %{T-}%free%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
-; 
-; 
-;
-ws-icon-0 = 0;
+ws-icon-0 = 0;
 ws-icon-1 = 1; 
 ws-icon-2 = 2;
 ws-icon-3 = 3;  
@@ -118,85 +88,67 @@ format = <label-state>
 label-monitor= %name%
 
 ; label-monitor = %icon%
-label-focused = %name%  
+
+label-focused = %{T4}%{T-}
 label-focused-background = ${colors.focused}
 label-focused-foreground = ${colors.primary}
 label-focused-padding = 2
 
-label-occupied = %name%
+label-occupied = %{T4}%{T-}
 label-occupied-padding = 2
 
 label-urgent = %name%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %name%
+label-monocle = %name%MONOCLE
+
+label-empty = %{T2}%{T-}
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-# format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
-label = %percentage:2%%
+label = %{T7}%{T-} %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-# format-prefix = "   " 
-; TODO white
 format-prefix-foreground = ${colors.foreground}
-label = %mb_used%
+label = %{T4} %{T-}%percentage_used%%
 
 [module/date]
 type = internal/date
-interval = 5
-; date =
-date-alt = " %Y-%m-%d"
+date-alt = "%Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
-# format-prefix = " " 
 format-prefix-foreground = ${colors.foreground}
-label = %date% %time%
+label = %{T6}%date%%{T-} %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-; format-volume = <label-volume> <bar-volume>
-format-volume = <label-volume> <bar-volume>
+format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%% 
 label-volume-foreground = ${root.foreground}
 
-label-muted =  muted
-label-muted-foreground = ${root.foreground}
+ramp-volume-0 = %{T4}%{T-}
+ramp-volume-1 = %{T4}%{T-}
+ramp-volume-2 = %{T4} %{T-}
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+label-muted = %{T3}%{T-}
+label-muted-foreground = ${root.foreground}
 
 [module/powermenu]
 type = custom/menu
-# expand-right = true
 
-format-spacing = 1
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
+format-spacing = 0
+label-open = %{T2}%{T-}
+label-open-foreground = ${colors.primary}
+label-close = cancel
+label-close-foreground = ${colors.primary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
@@ -215,13 +167,18 @@ menu-2-0-exec = poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
-[module/capslock]
-type = custom/ipc
-hook-0 = check_caplock
-format-underline = ${colors.secondary}
-format-background = ${colors.secondary}
-format-padding = 1
-initial = 1
+[module/bluetooth]
+type = custom/script
+exec = echo "hello"
+format = <label>
+label = %{T7}%{T-}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+format-spacing = 1
+format = <label-indicator>
+label-indicator-on-capslock = %{T3} %{T-}
+label-indicator-off-capslock = %{T3} %{T-}
 
 [settings]
 screenchange-reload = true
@@ -234,5 +191,4 @@ screenchange-reload = true
 [global/wm]
 margin-top = 1
 margin-bottom = 1
-
 ; vim:ft=dosini
