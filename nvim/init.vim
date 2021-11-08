@@ -34,6 +34,9 @@ set cmdheight=2
 set shortmess+=c
 
 set termguicolors
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark=1
+autocmd vimenter * ++nested colorscheme gruvbox
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " conquer of completion 
@@ -88,9 +91,6 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types= 1
 let g:go_auto_type_info = 1
 
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark=1
-autocmd vimenter * ++nested colorscheme gruvbox
 
 " coc configs
 inoremap <silent><expr> <c-.> coc#refresh()
