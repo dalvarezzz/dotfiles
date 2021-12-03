@@ -34,7 +34,7 @@ super + y
  
 # swap the current desktop the previous focused desktop
 super + Tab
-	bspc desktop -s older --follow
+	bspc desktop -s last.active
 
 #
 # state/flags
@@ -84,7 +84,7 @@ super + period
 	bspc monitor -f last
 
 super + o
-  bspc desktop -f last
+  bspc desktop -f last.occupied
  
 # focus the older or newer node in the focus history
 # super + {o,i}
