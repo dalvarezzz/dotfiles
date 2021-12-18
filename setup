@@ -1,0 +1,64 @@
+#!/usr/bin/bash
+
+# backup user configs for safety reasons :^)
+backup_config () {
+  local user_dotfile_path=$1
+  local dotfile_backup=$user_dotfile_path.bak
+  echo "
+  Backing up...
+  $user_dotfile_path -> $dotfile_backup
+  "
+  mv $user_dotfile_path $dotfile_backup
+}
+
+# Create a symlink from this repo dotfiles to the user's .config dir
+# doing so will track every change done within user configs
+create_symlink () {
+  local user_dotfile_path=$1
+  local config=$2
+  local dotfile_path=$PWD/$config
+  echo "
+  Creating symlink...
+  $dotfile_path -> $user_dotfile_path
+  "
+  ln -s $dotfile_path $user_dotfile_path
+}
+
+# check whether there is already an existing config in user's system
+# in which case user's config will be backup
+setup_config () {
+  local config=$1
+  local path_to_config="$HOME/.config/$config"
+  if [[ -d $path_to_config || -f $path_to_config ]];
+  then
+    backup_config $path_to_config
+  fi
+  create_symlink $path_to_config $config
+}
+
+print_log () {
+  echo "
+        ██            ██     ████ ██  ██
+     ░██           ░██    ░██░ ░░  ░██
+     ░██  ██████  ██████ ██████ ██ ░██  █████   ██████
+  ██████ ██░░░░██░░░██░ ░░░██░ ░██ ░██ ██░░░██ ██░░░░
+ ██░░░██░██   ░██  ░██    ░██  ░██ ░██░███████░░█████
+░██  ░██░██   ░██  ░██    ░██  ░██ ░██░██░░░░  ░░░░░██
+░░██████░░██████   ░░██   ░██  ░██ ███░░██████ ██████
+ ░░░░░░  ░░░░░░     ░░    ░░   ░░ ░░░  ░░░░░░ ░░░░░░
+  "
+}
+
+main () {
+  print_log
+  # file/dir configs are stored in a plain text file named "config"
+  # to ease adding new configs, rather than hardcoding them in an array
+  for config in `cat config`;
+  do
+    echo "******** $config ********"
+    setup_config $config
+  done
+}
+
+main
+
