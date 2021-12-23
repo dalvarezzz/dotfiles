@@ -8,6 +8,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'vimwiki/vimwiki' -- vim wiki plugin to create local wiki
 Plug('prettier/vim-prettier', { ['do'] = 'npm install' })
 Plug 'tpope/vim-commentary' -- https://github.com/tpope/vim-commentary
-Plug 'ayu-theme/ayu-vim'
+Plug 'rktjmp/lush.nvim'
+Plug 'ellisonleao/gruvbox.nvim'
 vim.call('plug#end')
 

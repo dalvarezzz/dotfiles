@@ -5,7 +5,8 @@ vim.opt.showcmd = true
 vim.opt.showmode = true
 
 vim.opt.tabstop = 2
-vim.opt.expandtab = true -- insert spaces
+vim.opt.shiftwidth = 2
+-- vim.opt.expandtab = true -- insert spaces instead of tabs
 vim.opt.hidden = true -- avoid having to write changes before editing another buffer
 vim.opt.autoindent = true
 
