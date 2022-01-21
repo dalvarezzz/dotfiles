@@ -1,7 +1,8 @@
 require('nvim-treesitter.configs').setup{
 	ensure_installed = "maintained",
 	highlight = {
-		enable = true
+		enable = true,
+		additional_vim_regex_highlighting = false
 	},
 	incremental_selection = {
 		enable = true,
