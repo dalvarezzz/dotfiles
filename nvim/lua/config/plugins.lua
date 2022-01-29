@@ -17,6 +17,7 @@ Plug 'ellisonleao/gruvbox.nvim'
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSUpdate' })
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'windwp/nvim-autopairs'
 
 vim.call('plug#end')
 
@@ -24,3 +25,4 @@ require('plugins.cmp')
 require('plugins.lspconfig')
 require('plugins.treesitter')
 require('plugins.telescope')
+require('plugins.autopairs')

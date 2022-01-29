@@ -17,10 +17,11 @@ end
 vim.o.completeopt = 'menuone,noselect'
 
 -- luasnip setup
-local luasnip = require 'luasnip'
+local luasnip = require('luasnip')
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -34,10 +35,11 @@ cmp.setup {
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
+		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    -- ['<CR>'] = cmp.mapping.confirm {
+    --   behavior = cmp.ConfirmBehavior.Replace,
+    --   select = true,
+    -- },
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
