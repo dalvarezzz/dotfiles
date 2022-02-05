@@ -1,4 +1,0 @@
-{
-  "rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
-  "tsserver.npm": "/home/ddvlzsz/.nvm/versions/node/v12.18.2/bin/npm"
-}

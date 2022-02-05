@@ -14,10 +14,12 @@ Plug('prettier/vim-prettier', { ['do'] = 'npm install' })
 Plug 'tpope/vim-commentary' -- https://github.com/tpope/vim-commentary
 Plug 'rktjmp/lush.nvim'
 Plug 'ellisonleao/gruvbox.nvim'
+Plug 'EdenEast/nightfox.nvim'
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSUpdate' })
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'windwp/nvim-autopairs'
+Plug 'rebelot/kanagawa.nvim'
 
 vim.call('plug#end')
 
