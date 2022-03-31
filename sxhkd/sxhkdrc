@@ -6,7 +6,6 @@ super + Return
 super + {_, shift+} @space
   rofi -show {window,drun} -no-lazy-grab -modi {window,drun}
 
-# firefox shortcut
 super + shift + i
 	firefox
 
@@ -14,10 +13,11 @@ super + shift + i
 super + Escape
 	pkill -USR1 -x sxhkd
 
+
 # quit/restart bspwm
 super + shift + {q,r}
  	bspc {quit,wm -r}
-
+#
 # # close and kill
 super + {_,shift + }w
 	bspc node -{c,k}
@@ -45,7 +45,7 @@ super + Tab
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# set node flags
+# set the node flags
 # locked: can't be closed
 # sticky: will stay in the desktop of the focused monitor
 # private: keeps its position and size
@@ -61,10 +61,14 @@ super + q
 #
 
 # focus the node in the given direction
-# if swift is press the nodes will be swaped
+# if shift is press the nodes will be swaped
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
  
+# # focus the node for the given path jump
+# super + {p,b}
+# 	bspc node -f @{parent,brother}
+
 # focus the next/previous window in the current desktop
 # Useful when combined with monocle layout, as it let you iterate
 # over the desktop's nodes
@@ -75,13 +79,22 @@ super + {_,shift + }c
 super + bracket{left,right}
   bspc desktop -f {prev,next}.local.occupied
 
-# focus the last active monitor
+# TODO: figure out how to send current node to the next/prev desktop
+# super + {plus,minus}
+# 	bspc node -d '^{'
+
+# focus the last node/desktop
 super + period
 	bspc monitor -f last
 
-# focus the last active & occupied desktop
 super + o
   bspc desktop -f last.occupied
+ 
+# focus the older or newer node in the focus history
+# super + {o,i}
+#  	bspc wm -h off; \
+#  	bspc node {older,newer} -f; \
+#  	bspc wm -h on
  
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
@@ -119,10 +132,6 @@ super + alt + {h,j,k,l}
 super + alt + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-# move a floating window
-super + {Left,Down,Up,Right}
-  bspc node -v {-20 0,0 20,0 -20,20 0}
-
 #
 # Volume managment
 #
@@ -137,3 +146,6 @@ XF86AudioLowerVolume
 XF86AudioMute
   pactl set-sink-mute @DEFAULT_SINK@ toggle
 
+# move a floating window
+super + {Left,Down,Up,Right}
+  bspc node -v {-20 0,0 20,0 -20,20 0}
