@@ -1,27 +1,28 @@
-local Plug = vim.fn['plug#']
+vim.cmd [[packadd packer.nvim]]
 
-vim.call('plug#begin', '~/.config/nvim/plugged')
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'itchyny/lightline.vim' -- color line at the bottom
-Plug 'rust-lang/rust.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'vimwiki/vimwiki' -- vim wiki plugin to create local wiki
-Plug('prettier/vim-prettier', { ['do'] = 'npm install' })
-Plug 'tpope/vim-commentary' -- https://github.com/tpope/vim-commentary
-Plug 'rktjmp/lush.nvim'
-Plug 'ellisonleao/gruvbox.nvim'
-Plug 'EdenEast/nightfox.nvim'
-Plug('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSUpdate' })
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'windwp/nvim-autopairs'
-Plug 'rebelot/kanagawa.nvim'
-
-vim.call('plug#end')
+require('packer').startup(function()
+	use 'wbthomason/packer.nvim'
+	use 'neovim/nvim-lspconfig'
+	use 'hrsh7th/nvim-cmp'
+	use 'hrsh7th/cmp-nvim-lsp'
+	use 'saadparwaiz1/cmp_luasnip'
+	use 'L3MON4D3/LuaSnip'
+	use 'itchyny/lightline.vim' -- color line at the bottom
+	use 'rust-lang/rust.vim'
+	use 'pangloss/vim-javascript'
+	use 'vimwiki/vimwiki' -- vim wiki plugin to create local wiki
+	use { 'prettier/vim-prettier', ['do'] = 'npm install' }
+	use 'tpope/vim-commentary' -- https://github.com/tpope/vim-commentary
+	use 'rktjmp/lush.nvim'
+	use 'ellisonleao/gruvbox.nvim'
+	use 'EdenEast/nightfox.nvim'
+	use { 'nvim-treesitter/nvim-treesitter', ['do'] = 'TSUpdate' }
+	use 'nvim-lua/plenary.nvim'
+	use 'nvim-telescope/telescope.nvim'
+	use 'windwp/nvim-autopairs'
+	use 'rebelot/kanagawa.nvim'
+	use 'kyazdani42/nvim-tree.lua'
+end)
 
 require('plugins.cmp')
 require('plugins.lspconfig')
