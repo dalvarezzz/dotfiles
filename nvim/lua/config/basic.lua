@@ -13,9 +13,7 @@ local options = {
 	gdefault = true,-- appends "g" when replacing
 	incsearch = true,
 	hlsearch = true,
-	cursorline = true,
-	termguicolors = true,
-	background = 'dark'
+	cursorline = true
 }
 
 for k, v in pairs(options) do

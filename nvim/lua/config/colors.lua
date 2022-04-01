@@ -1,2 +1,3 @@
-vim.cmd('colorscheme kanagawa')
--- vim.cmd('colorscheme nordfox')
+vim.opt.termguicolors = true
+vim.o.background = "dark"
+vim.cmd('colorscheme gruvbox')
