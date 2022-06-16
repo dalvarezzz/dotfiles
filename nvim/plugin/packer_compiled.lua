@@ -135,8 +135,9 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["rust.vim"] = {
-    loaded = true,
-    path = "/home/ddvlzsz/.local/share/nvim/site/pack/packer/start/rust.vim",
+    loaded = false,
+    needs_bufread = true,
+    path = "/home/ddvlzsz/.local/share/nvim/site/pack/packer/opt/rust.vim",
     url = "https://github.com/rust-lang/rust.vim"
   },
   ["telescope.nvim"] = {
@@ -148,21 +149,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ddvlzsz/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
-  },
-  ["vim-javascript"] = {
-    loaded = true,
-    path = "/home/ddvlzsz/.local/share/nvim/site/pack/packer/start/vim-javascript",
-    url = "https://github.com/pangloss/vim-javascript"
-  },
-  ["vim-prettier"] = {
-    loaded = true,
-    path = "/home/ddvlzsz/.local/share/nvim/site/pack/packer/start/vim-prettier",
-    url = "https://github.com/prettier/vim-prettier"
-  },
-  vimwiki = {
-    loaded = true,
-    path = "/home/ddvlzsz/.local/share/nvim/site/pack/packer/start/vimwiki",
-    url = "https://github.com/vimwiki/vimwiki"
   }
 }
 
