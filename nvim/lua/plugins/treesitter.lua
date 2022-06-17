@@ -1,28 +1,28 @@
-return {
+require('nvim-treesitter.configs').setup{
 	ensure_installed = {
-		"typescript",
-		"json",
-		"vim",
-		"go",
-		"rust",
-		"lua",
-		"javascript",
-		"python",
+		'typescript',
+		'json',
+		'vim',
+		'go',
+		'rust',
+		'lua',
+		'javascript',
+        'python'
 	},
 	highlight = {
 		enable = true,
-		additional_vim_regex_highlighting = false,
+		additional_vim_regex_highlighting = false
 	},
 	incremental_selection = {
 		enable = true,
-		keymaps = {
+		keymaps= {
 			init_selection = "gnn",
 			node_incremental = "grn",
 			scope_incremental = "grc",
-			node_decremental = "grm",
-		},
+			node_decremental = "grm"
+		}
 	},
 	indent = {
-		enable = true,
-	},
+		enable = true
+	}
 }
