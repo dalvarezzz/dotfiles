@@ -1,5 +1,5 @@
-require('telescope').setup{
+return {
 	defaults = {
-		file_ignore_patterns = {"node_modules", "plugged"}
-	}
+		file_ignore_patterns = { "node_modules" },
+	},
 }
