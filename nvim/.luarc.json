@@ -1,24 +1,27 @@
 {
-    "diagnostics": {
-        "groupFileStatus": {
-            "ambiguity": "Any",
-            "await": "Any",
-            "duplicate": "Any",
-            "global": "Any",
-            "luadoc": "Any",
-            "redefined": "Any",
-            "strict": "Any",
-            "type-check": "Any",
-            "unbalanced": "Any",
-            "unused": "Any"
-        },
-        "ignoredFiles": "Opened",
-        "libraryFiles": "Opened"
+  "diagnostics": {
+    "groupFileStatus": {
+      "ambiguity": "Any",
+      "await": "Any",
+      "duplicate": "Any",
+      "global": "Any",
+      "luadoc": "Any",
+      "redefined": "Any",
+      "strict": "Any",
+      "type-check": "Any",
+      "unbalanced": "Any",
+      "unused": "Any"
     },
-    "runtime": {
-        "version": "LuaJIT",
-        "path": [
-            "?.lua"
-        ]
-    }
+    "ignoredFiles": "Opened",
+    "libraryFiles": "Opened"
+  },
+  "completion": {
+    "showWords": "Disable"
+  },
+  "runtime": {
+    "version": "LuaJIT",
+    "path": [
+      "lua/?"
+    ]
+  }
 }
