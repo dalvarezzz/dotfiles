@@ -39,13 +39,13 @@ require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'windwp/nvim-autopairs'
-  -- use {
-  --       'nvim-lualine/lualine.nvim',
-  --       requires = {
-  --           'kyazdani42/nvim-web-devicons',
-  --           opt = true
-  --       }
-  -- }
+  use {
+        'nvim-lualine/lualine.nvim',
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+            opt = true
+        }
+  }
   use {
         'folke/twilight.nvim',
         config = function()
@@ -69,4 +69,4 @@ require('config.cmp')
 require('config.treesitter')
 require('config.telescope')
 require('config.autopairs')
--- require('config.lualine')
+require('config.lualine')
