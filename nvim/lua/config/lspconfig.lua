@@ -36,9 +36,10 @@ local servers = {
   gopls = {},
   tsserver = {},
   rust_analyzer = {},
+  svelte = {},
   sumneko_lua = {
-        cmd = { '/home/ddvlzsz/bin/lua-lsp/bin/lua-language-server', '--logpath=~/sumnekologs' },
-        settings = {
+    cmd = { '/home/ddvlzsz/bin/lua-lsp/bin/lua-language-server', '--logpath=~/sumnekologs' },
+    settings = {
       Lua = {
         completion = {
           showWords = 'Disable'
@@ -47,18 +48,18 @@ local servers = {
           globals = { 'vim' },
         },
         runtime = {
-            version = 'LuaJIT',
-            -- path = vim.split(package.path, ';')
+          version = 'LuaJIT',
+          -- path = vim.split(package.path, ';')
         },
         workspace = {
-            library = {
-                vim.api.nvim_get_runtime_file('', true),
-                -- vim.fn.expand('$VIMRUNTIME/lua'),
-                -- vim.fn.stdpath('config') .. '/lua'
-            }
+          library = {
+            vim.api.nvim_get_runtime_file('', true),
+            -- vim.fn.expand('$VIMRUNTIME/lua'),
+            -- vim.fn.stdpath('config') .. '/lua'
+          }
         }
       },
-        }
+    }
   }
 }
 for server, config in pairs(servers) do

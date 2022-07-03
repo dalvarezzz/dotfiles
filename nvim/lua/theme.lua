@@ -1,4 +1,4 @@
 vim.opt.termguicolors = true
 -- vim.o.background = 'nordfox'
 
-vim.cmd([[colorscheme nordfox]])
+vim.cmd([[colorscheme zephyr]])

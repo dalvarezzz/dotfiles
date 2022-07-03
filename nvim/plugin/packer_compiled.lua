@@ -167,6 +167,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ddvlzsz/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
     url = "https://github.com/folke/zen-mode.nvim"
+  },
+  ["zephyr-nvim"] = {
+    loaded = true,
+    path = "/home/ddvlzsz/.local/share/nvim/site/pack/packer/start/zephyr-nvim",
+    url = "https://github.com/glepnir/zephyr-nvim"
   }
 }
 

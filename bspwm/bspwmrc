@@ -6,11 +6,15 @@
 nitrogen --restore &
 picom &
 pgrep -x sxhkd > /dev/null || sxhkd &
+redshift -l 41.65518:-4.72372 &
 dunst &
 $HOME/.config/polybar/launch.sh
 
-bspc monitor HDMI-0 -d 4 5 6
-bspc monitor DP-1 -d 1 2 3
+
+# bspc monitor HDMI-0 -d 1 2 3 4 5 
+# bspc monitor DP-1 -d 4 5 6 7 8 9
+bspc monitor HDMI-0 -d 'j' 'k' 'l'
+bspc monitor DP-1 -d 's' 'd' 'f'
 
 bspc config border_width     4
 # bspc config window_gap			 4

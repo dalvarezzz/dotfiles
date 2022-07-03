@@ -28,7 +28,7 @@ require('packer').startup(function(use)
           require('Comment').setup()
         end
   }
-  use { "EdenEast/nightfox.nvim", tag = "v1.0.0" }
+  use { 'EdenEast/nightfox.nvim', tag = 'v1.0.0' }
   -- use {
   --       'ellisonleao/gruvbox.nvim'
   -- }
@@ -59,6 +59,11 @@ require('packer').startup(function(use)
         end
   }
   use 'mfussenegger/nvim-lint'
+  use {
+    'glepnir/zephyr-nvim',
+    requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end

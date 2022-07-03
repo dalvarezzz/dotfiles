@@ -1,140 +1,79 @@
-# terminal emulator
-super + Return
- 	alacritty
+# # # # # # # # #
+# OPEN COMMANDS
+# # # # # # # # # 
+super + o ; {f,t}
+  {firefox,alacritty}
 
-# program launcher
-super + {_, shift+} @space
+super + {_, shift+} @r
   rofi -show {window,drun} -no-lazy-grab -modi {window,drun}
 
-super + shift + i
-	firefox
+# # # # # # # # # # 
+# MISCELLANEA
+# # # # # # # # # #
 
-# make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
+super + shift + q
+ 	bspc quit
 
-# quit/restart bspwm
-super + shift + {q,r}
- 	bspc {quit,wm -r}
-#
-# # close and kill
-super + {_,shift + }w
-	bspc node -{c,k}
- 
-# alternate between the tiled and monocle layout
-# monocle layout set every leaf of the current node sequentially.
-# Default navigation is bspc node -f next|prev
-super + m
+# # # # # # # # # # # 
+# LAYOUT
+# # # # # # # # # # #
+super + space
 	bspc desktop -l next
+
+# # # # # # # # # # #
+# NODE MANAGEMENT
+# # # # # # # # # # #
+super + {_,shift + }w
+	bspc node -{c,k} ; bspc node -f last
+
+super + comma
+	bspc node -f next.local.!hidden.window
  
-# send the newest marked node to the newest preselected node
-super + y
-	bspc node newest.marked -n focused
- 
-# swap the current desktop the previous focused desktop
 super + Tab
-	bspc desktop -s last.active
+	bspc node -f last.local
 
-#
-# state/flags
-#
+super + u
+  bspc node -f urgent
+
+super + m ; {o}
+  bspc node -m last --follow
+
+super + m ; {s,d,f,j,k,l}
+  bspc node -d '{s,d,f,j,k,l}' --follow
  
-# set the window state
-# pseudo_tiled: floating tiled
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+# # # # # # # # # # #
+# NODE FLAGS
+# # # # # # # # # # #
 
-# set the node flags
-# locked: can't be closed
-# sticky: will stay in the desktop of the focused monitor
-# private: keeps its position and size
-super + ctrl + {x,y,z}
-	bspc node -g {locked,sticky,private}
+super + t ; f
+  bspc node -t fullscreen
 
-# marked: useful for deferred actions
-super + q
-  bspc node -g marked
+super + t ; s
+  bspc node -t floating
 
-#
-# focus/swap
-#
+super + t ; t
+  bspc node -t tiled any
 
-# focus the node in the given direction
-# if shift is press the nodes will be swaped
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
- 
-# # focus the node for the given path jump
-# super + {p,b}
-# 	bspc node -f @{parent,brother}
+super + t ; p
+  bspc node -g sticky 
 
-# focus the next/previous window in the current desktop
-# Useful when combined with monocle layout, as it let you iterate
-# over the desktop's nodes
-super + {_,shift + }c
-	bspc node -f {next,prev}.local.!hidden.window
- 
-# focus the next/previous occupied desktop in the current monitor
-super + bracket{left,right}
-  bspc desktop -f {prev,next}.local.occupied
 
-# TODO: figure out how to send current node to the next/prev desktop
-# super + {plus,minus}
-# 	bspc node -d '^{'
+# # # # # # # # # # # 
+# DESKTOP
+# # # # # # # # # # # 
 
-# focus the last node/desktop
+super + {s,d,f,j,k,l}
+  bspc desktop -f '{s,d,f,j,k,l}'
+
 super + period
 	bspc monitor -f last
 
-super + o
-  bspc desktop -f last.occupied
- 
-# focus the older or newer node in the focus history
-# super + {o,i}
-#  	bspc wm -h off; \
-#  	bspc node {older,newer} -f; \
-#  	bspc wm -h on
- 
-# focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
-
-#
-# preselect
-#
-
-# preselect the direction
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
-
-# preselect the ratio
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
-
-# cancel the preselection for the focused node
-super + ctrl + space
-	bspc node -p cancel
-
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
-#
-# move/resize
-#
-
-# expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-
-# contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-
-#
-# Volume managment
-#
+# # # # # # # # # # #
+# VOLUME MANAGEMENT
+# # # # # # # # # # #
 
 # volume control
 XF86AudioRaiseVolume
@@ -145,7 +84,3 @@ XF86AudioLowerVolume
 
 XF86AudioMute
   pactl set-sink-mute @DEFAULT_SINK@ toggle
-
-# move a floating window
-super + {Left,Down,Up,Right}
-  bspc node -v {-20 0,0 20,0 -20,20 0}
