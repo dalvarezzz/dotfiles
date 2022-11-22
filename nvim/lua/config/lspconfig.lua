@@ -1,7 +1,7 @@
 local nvim_lsp = require('lspconfig')
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -33,12 +33,12 @@ local on_attach = function(client, bufnr)
 end
 
 local servers = {
+  astro = {},
   gopls = {},
   tsserver = {},
   rust_analyzer = {},
   svelte = {},
   sumneko_lua = {
-    cmd = { '/home/ddvlzsz/bin/lua-lsp/bin/lua-language-server', '--logpath=~/sumnekologs' },
     settings = {
       Lua = {
         completion = {
@@ -69,5 +69,5 @@ for server, config in pairs(servers) do
         flags = {
             debounce_text_changes = 150,
         }
-  }, config))
+                         }, config))
 end

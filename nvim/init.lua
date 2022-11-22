@@ -1,5 +1,5 @@
+require('plugin_list')
 require('options')
 require('autocommands')
 require('keymaps')
-require('plugin_list')
 require('theme')

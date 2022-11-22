@@ -14,9 +14,15 @@ local options = {
   incsearch      = true,
   hlsearch       = true,
   cursorline     = true,
-  relativenumber = true
+  relativenumber = true,
+  termguicolors  = true
 }
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+-- Disable default netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+

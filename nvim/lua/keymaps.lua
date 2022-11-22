@@ -9,4 +9,5 @@ vim.api.nvim_set_keymap('n', '<leader>fp', "<cmd> lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>ft', "<cmd> lua require('telescope.builtin').treesitter()<cr>", { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fx', "<cmd> lua require('telescope.builtin').marks()<cr>", { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fz', "<cmd> lua require('telescope.builtin').lsp_references()<cr>",
-                        { noremap = true })
+  { noremap = true })
+

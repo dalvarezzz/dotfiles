@@ -8,7 +8,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
     '--depth',
     '1',
     'https://github.com/wbthomason/packer.nvim',
-    install_path }
+    install_path
+  }
 end
 
 require('packer').startup(function(use)
@@ -18,10 +19,10 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip'
-  use {
-        'rust-lang/rust.vim',
-        opt = true
-  }
+  -- use {
+  --       'rust-lang/rust.vim',
+  --       opt = true
+  -- }
   use {
         'numToStr/Comment.nvim',
         config = function()
@@ -29,13 +30,11 @@ require('packer').startup(function(use)
         end
   }
   use { 'EdenEast/nightfox.nvim', tag = 'v1.0.0' }
-  -- use {
-  --       'ellisonleao/gruvbox.nvim'
-  -- }
   use {
         'lewis6991/gitsigns.nvim',
   }
   use { 'nvim-treesitter/nvim-treesitter', ['do'] = 'TSUpdate' }
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'windwp/nvim-autopairs'
@@ -62,6 +61,41 @@ require('packer').startup(function(use)
   use {
     'glepnir/zephyr-nvim',
     requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
+  }
+
+  use 'nvim-tree/nvim-web-devicons'
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    tag = 'nightly',
+    config = function()
+      require('nvim-tree').setup()
+    end
+  }
+
+  use {
+    'rmagatti/auto-session',
+    config = function()
+      require('auto-session').setup()
+    end
+  }
+
+  use {
+    'goolord/alpha-nvim',
+    config = function()
+      require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
+    end
+  }
+
+  use {
+    'kylechui/nvim-surround',
+    tag = '*',
+    config = function()
+      require('nvim-surround').setup()
+    end
   }
 
   if packer_bootstrap then

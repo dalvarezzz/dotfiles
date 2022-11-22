@@ -7,7 +7,10 @@ require('nvim-treesitter.configs').setup{
 		'rust',
 		'lua',
 		'javascript',
-        'python'
+    'python',
+    'astro',
+    'css',
+    'tsx'
 	},
 	highlight = {
 		enable = true,
