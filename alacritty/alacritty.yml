@@ -3,13 +3,13 @@ env:
 window:
   decorations: full
   padding:
-    x: 4
-    y: 4
+    x: 8
+    y: 8
 key_bindings:
   - { key: K, mods: Control, action: ClearHistory }
 font:
   normal:
-    family: JetBrains Mono
+    family: "JetBrainsMono Nerd Font"
   size: 10
   offset:
     x: 1
