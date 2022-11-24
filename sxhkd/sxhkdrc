@@ -1,75 +1,78 @@
 # # # # # # # # #
 # OPEN COMMANDS
 # # # # # # # # # 
-super + o ; {f,t}
-  {firefox,alacritty}
+super + Return
+	alacritty
 
-super + {_, shift+} @r
-  rofi -show {window,drun} -no-lazy-grab -modi {window,drun}
+super + @space
+	dmenu_run
 
-# # # # # # # # # # 
-# MISCELLANEA
-# # # # # # # # # #
-
+# # # # # # # # #
+# GENERIC
+# # # # # # # # # 
 super + Escape
 	pkill -USR1 -x sxhkd
 
-super + shift + q
- 	bspc quit
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+super + {_,shift + }w
+	bspc node -{c,k}
 
 # # # # # # # # # # # 
 # LAYOUT
 # # # # # # # # # # #
-super + space
+
+super + m
 	bspc desktop -l next
 
 # # # # # # # # # # #
 # NODE MANAGEMENT
 # # # # # # # # # # #
-super + {_,shift + }w
-	bspc node -{c,k} ; bspc node -f last
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-super + comma
-	bspc node -f next.local.!hidden.window
- 
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
 super + Tab
 	bspc node -f last.local
 
-super + u
-  bspc node -f urgent
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
 
-super + m ; {o}
-  bspc node -m last --follow
+super + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
 
-super + m ; {s,d,f,j,k,l}
-  bspc node -d '{s,d,f,j,k,l}' --follow
- 
-# # # # # # # # # # #
-# NODE FLAGS
-# # # # # # # # # # #
+super + Tab
+	bspc desktop -f last
 
-super + t ; f
-  bspc node -t fullscreen
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
 
-super + t ; s
-  bspc node -t floating
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
 
-super + t ; t
-  bspc node -t tiled any
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
 
-super + t ; p
-  bspc node -g sticky 
+super + ctrl + space
+	bspc node -p cancel
+
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 
-# # # # # # # # # # # 
-# DESKTOP
-# # # # # # # # # # # 
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-super + {s,d,f,j,k,l}
-  bspc desktop -f '{s,d,f,j,k,l}'
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-super + period
-	bspc monitor -f last
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # # # # # # # # # # #
 # VOLUME MANAGEMENT

@@ -1,35 +1,19 @@
 #! /bin/sh
-
-# TODO(move this to a bash script that checks wheter devices are plugged in or not)
-# xrandr --output HDMI-0 --primary --auto --output DP-1 --auto --left-of HDMI-0
-
-nitrogen --restore &
-picom &
 pgrep -x sxhkd > /dev/null || sxhkd &
-redshift -l 41.65518:-4.72372 &
-dunst &
+pgrep -x redshift > /dev/null || redshift -l '41.652779:-4.723611' &
 $HOME/.config/polybar/launch.sh
 
+bspc monitor -d I II III IV V VI VII VIII IX X
 
-# bspc monitor HDMI-0 -d 1 2 3 4 5 
-# bspc monitor DP-1 -d 4 5 6 7 8 9
-bspc monitor HDMI-0 -d 'j' 'k' 'l'
-bspc monitor DP-1 -d 's' 'd' 'f'
-
-bspc config border_width     4
-# bspc config window_gap			 4
+bspc config border_width         2
+bspc config window_gap           0
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
-bspc config gapless_monocle      false
-# bspc config ignore_ewmh_focus    true
-
+bspc config gapless_monocle      true
 bspc config focused_border_color '#ffa600'
 bspc config active_border_color  '#003f5c'
-# bspc config normal_border_color  '#58508d'
 
-bspc rule -a firefox:Navigator desktop=^4 follow=on focus=on
-bspc rule -a Alacritty:Alacritty desktop=^1 follow=on focus=on
-bspc rule -a discord:discord desktop=^6 focus=off follow=off 
-bspc rule -a 'VirtualBox Manager':'VirtualBox Manager' desktop=^5 focus=off follow=off 
-bspc rule -a Code:code desktop=^5 focus=off follow=off 
+bspc rule -a firefox:Navigator desktop=^1 follow=on focus=on
+bspc rule -a Alacritty:Alacritty desktop=^2 follow=on focus=on
+bspc rule -a discord:discord desktop=^3 focus=off follow=off 

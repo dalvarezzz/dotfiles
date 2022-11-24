@@ -24,38 +24,35 @@ require('packer').startup(function(use)
   --       opt = true
   -- }
   use {
-        'numToStr/Comment.nvim',
-        config = function()
-          require('Comment').setup()
-        end
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
   }
   use { 'EdenEast/nightfox.nvim', tag = 'v1.0.0' }
-  use {
-        'lewis6991/gitsigns.nvim',
-  }
   use { 'nvim-treesitter/nvim-treesitter', ['do'] = 'TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'windwp/nvim-autopairs'
   use {
-        'nvim-lualine/lualine.nvim',
-        requires = {
-            'kyazdani42/nvim-web-devicons',
-            opt = true
-        }
+    'nvim-lualine/lualine.nvim',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      opt = true
+    }
   }
   use {
-        'folke/twilight.nvim',
-        config = function()
-          require('twilight').setup()
-        end
+    'folke/twilight.nvim',
+    config = function()
+      require('twilight').setup()
+    end
   }
   use {
-        'folke/zen-mode.nvim',
-        config = function()
-          require('zen-mode').setup()
-        end
+    'folke/zen-mode.nvim',
+    config = function()
+      require('zen-mode').setup()
+    end
   }
   use 'mfussenegger/nvim-lint'
   use {
@@ -79,7 +76,9 @@ require('packer').startup(function(use)
   use {
     'rmagatti/auto-session',
     config = function()
-      require('auto-session').setup()
+      require('auto-session').setup {
+        log_level = 'error'
+      }
     end
   }
 
@@ -95,6 +94,43 @@ require('packer').startup(function(use)
     tag = '*',
     config = function()
       require('nvim-surround').setup()
+    end
+  }
+
+  use {
+    'm-demare/hlargs.nvim',
+    requires = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('hlargs').setup()
+    end
+  }
+
+  use {
+    'simrat39/symbols-outline.nvim',
+    config = function()
+      require('symbols-outline').setup()
+    end
+  }
+
+  use {
+    'ray-x/lsp_signature.nvim',
+    config = function()
+      require('lsp_signature').setup()
+    end
+  }
+
+  use {
+    'SmiteshP/nvim-navic',
+    requires = 'neovim/nvim-lspconfig',
+    config = function()
+      require('nvim-navic').setup()
+    end
+  }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
     end
   }
 

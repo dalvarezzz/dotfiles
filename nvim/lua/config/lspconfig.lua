@@ -1,3 +1,4 @@
+local navic = require('nvim-navic')
 local nvim_lsp = require('lspconfig')
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -7,6 +8,10 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
 
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -29,7 +34,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', opts)
 end
 
 local servers = {
@@ -49,13 +54,10 @@ local servers = {
         },
         runtime = {
           version = 'LuaJIT',
-          -- path = vim.split(package.path, ';')
         },
         workspace = {
           library = {
             vim.api.nvim_get_runtime_file('', true),
-            -- vim.fn.expand('$VIMRUNTIME/lua'),
-            -- vim.fn.stdpath('config') .. '/lua'
           }
         }
       },
@@ -64,10 +66,10 @@ local servers = {
 }
 for server, config in pairs(servers) do
   nvim_lsp[server].setup(vim.tbl_deep_extend('force', {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        flags = {
-            debounce_text_changes = 150,
-        }
-                         }, config))
+    capabilities = capabilities,
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }, config))
 end
