@@ -25,4 +25,7 @@ end
 -- Disable default netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
+-- Highlight codefences returned from denols
+vim.g.markdown_fenced_languages = {
+  "ts=typescript"
+}
