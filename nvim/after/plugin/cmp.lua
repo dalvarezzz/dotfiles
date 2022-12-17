@@ -1,10 +1,5 @@
--- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menu,menuone,noselect'
-
--- luasnip setup
 local luasnip = require('luasnip')
-
--- nvim-cmp setup
 local cmp = require 'cmp'
 
 cmp.setup {
@@ -20,7 +15,8 @@ cmp.setup {
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm { select = true }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<C-y>'] = cmp.mapping.confirm { select = true },
+    ['<CR>'] = cmp.mapping.confirm { select = true },
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()

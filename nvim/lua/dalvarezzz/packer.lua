@@ -179,10 +179,3 @@ require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
-
-require('plugins_config.lsp')
-require('plugins_config.cmp')
-require('plugins_config.treesitter')
-require('plugins_config.telescope')
-require('plugins_config.autopairs')
-require('plugins_config.lualine')
