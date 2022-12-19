@@ -37,6 +37,7 @@ local servers = {
   tsserver = {
     root_dir = nvim_lsp.util.root_pattern("package.json")
   },
+  dockerls = {},
   rust_analyzer = {},
   svelte = {},
   vls = {},
