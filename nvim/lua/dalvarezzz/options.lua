@@ -20,7 +20,8 @@ local options = {
   backup         = false,
   undofile       = true,
   wrap           = false,
-  scrolloff      = 8
+  scrolloff      = 8,
+  completeopt    = 'noselect'
 }
 
 for k, v in pairs(options) do

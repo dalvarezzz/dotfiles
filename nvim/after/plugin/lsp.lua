@@ -1,7 +1,5 @@
 local nvim_lsp = require('lspconfig')
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
@@ -26,69 +24,76 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
   vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
   vim.keymap.set('n', '<leader>ff',
-    function()
-      vim.lsp.buf.format({ async = true })
-    end, opts)
+      function()
+        vim.lsp.buf.format({ async = true })
+      end, opts)
 end
 
 local servers = {
-  astro = {},
-  gopls = {},
-  tsserver = {
-    root_dir = nvim_lsp.util.root_pattern("package.json")
-  },
-  dockerls = {},
-  rust_analyzer = {},
-  svelte = {},
-  vls = {},
-  eslint = {
-    root_dir = nvim_lsp.util.root_pattern("package.json"),
-  },
-  denols = {
-    root_dir = nvim_lsp.util.root_pattern("deno.json"),
-    settings = {
-      deno = {
-        enable = true,
-        suggest = {
-          imports = {
-            hosts = {
-              ["https://crux.land"] = true,
-              ["https://deno.land"] = true,
-              ["https://x.nest.land"] = true
-            }
-          }
-        },
-      },
+    astro = {},
+    cssls = {},
+    gopls = {},
+    tsserver = {
+        root_dir = nvim_lsp.util.root_pattern("package.json")
     },
-  },
-  clangd = {},
-  sumneko_lua = {
-    settings = {
-      Lua = {
-        completion = {
-          showWords = 'Disable'
+    dockerls = {},
+    rust_analyzer = {},
+    svelte = {},
+    volar = {},
+    -- vuels = {},
+    eslint = {
+        root_dir = nvim_lsp.util.root_pattern("package.json"),
+    },
+    denols = {
+        root_dir = function(fname)
+          return nvim_lsp.util.root_pattern(
+                  "deno.json",
+                  "deno.jsonc"
+              )(fname)
+        end,
+        settings = {
+            deno = {
+                enable = true,
+                suggest = {
+                    imports = {
+                        hosts = {
+                            ["https://crux.land"] = true,
+                            ["https://deno.land"] = true,
+                            ["https://x.nest.land"] = true
+                        }
+                    }
+                },
+            },
         },
-        diagnostics = {
-          globals = { 'vim' },
-        },
-        runtime = {
-          version = 'LuaJIT',
-        },
-        workspace = {
-          library = {
-            vim.api.nvim_get_runtime_file('', true),
-          }
+    },
+    clangd = {},
+    lua_ls = {
+        settings = {
+            Lua = {
+                completion = {
+                    showWords = 'Disable'
+                },
+                diagnostics = {
+                    globals = { 'vim' },
+                },
+                runtime = {
+                    version = 'LuaJIT',
+                },
+                workspace = {
+                    library = {
+                        vim.api.nvim_get_runtime_file('', true),
+                    }
+                }
+            },
         }
-      },
     }
-  }
 }
 for server, config in pairs(servers) do
   nvim_lsp[server].setup(vim.tbl_deep_extend('force', {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
+      capabilities = capabilities,
+      on_attach = on_attach,
+      flags = {
+          debounce_text_changes = 150,
+      }
   }, config))
 end

@@ -60,7 +60,9 @@ require('nvim-treesitter.configs').setup {
     'astro',
     'css',
     'tsx',
-    'vue'
+    'vue',
+    'markdown',
+    'markdown_inline'
   },
   highlight = {
     enable = true,
