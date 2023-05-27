@@ -42,7 +42,7 @@ require('nvim-treesitter.configs').setup {
       },
       selection_modes = {
         ['@parameter.outer'] = 'v', -- charwise
-        ['@function.outer'] = 'V', -- linewise
+        ['@function.outer'] = 'V',  -- linewise
         ['@class.outer'] = '<c-v>', -- blockwise
       },
       include_surrounding_whitespace = true,
@@ -61,6 +61,7 @@ require('nvim-treesitter.configs').setup {
     'css',
     'tsx',
     'vue',
+    'svelte',
     'markdown',
     'markdown_inline'
   },
