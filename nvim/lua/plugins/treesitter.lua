@@ -1,6 +1,9 @@
 return {
   'nvim-treesitter/nvim-treesitter',
+  name = "nvim-treesitter",
   build = ':TSUpdate',
+  version = false,
+  event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'm-demare/hlargs.nvim'
@@ -58,23 +61,21 @@ return {
     ensure_installed = {
       'typescript',
       'json',
-      'vim',
       'go',
       'rust',
       'lua',
       'javascript',
       'python',
       'astro',
+      'html',
       'css',
       'tsx',
       'vue',
       'svelte',
       'markdown',
-      'markdown_inline'
     },
     highlight = {
       enable = true,
-      additional_vim_regex_highlighting = false
     },
     incremental_selection = {
       enable = true,
@@ -88,5 +89,18 @@ return {
     indent = {
       enable = true
     }
-  }
+  },
+  config = function(_, opts)
+    if type(opts.ensure_installed) == "table" then
+      local added = {}
+      opts.ensure_installed = vim.tbl_filter(function(lang)
+        if added[lang] then
+          return false
+        end
+        added[lang] = true
+        return true
+      end, opts.ensure_installed)
+    end
+    require("nvim-treesitter.configs").setup(opts)
+  end,
 }
