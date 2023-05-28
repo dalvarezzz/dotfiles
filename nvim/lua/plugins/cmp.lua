@@ -1,35 +1,9 @@
--- cmp.setup.cmdline({ '/', '?' }, {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = {
---     { name = 'buffer' }
---   }
--- })
---
--- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline(':', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = cmp.config.sources({
---     { name = 'path' }
---   }, {
---     { name = 'cmdline' }
---   })
--- })
-
 return {
   'L3MON4D3/LuaSnip',
   {
-    'windwp/nvim-autopairs',
-    opts = function()
-      return {
-        check_ts = true,
-        disable_filetype = { 'TelescopePrompt' }
-      }
-    end,
-    config = function(_, _)
-      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-      local cmp = require('cmp')
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
-    end
+    "echasnovski/mini.pairs",
+    event = "VeryLazy",
+    opts = {},
   },
   {
     'hrsh7th/nvim-cmp',
@@ -38,7 +12,6 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
       'saadparwaiz1/cmp_luasnip',
     },
     opts = function()
