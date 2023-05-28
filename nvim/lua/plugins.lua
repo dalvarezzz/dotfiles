@@ -18,7 +18,11 @@ return {
     'folke/tokyonight.nvim',
     opts = { style = 'moon' }
   },
-  { 'lewis6991/gitsigns.nvim', lazy = true },
+  {
+    'lewis6991/gitsigns.nvim',
+    cond = vim.fn.isdirectory('.git') ~= 0,
+    config = true
+  },
   {
     'goolord/alpha-nvim',
     config = function()
