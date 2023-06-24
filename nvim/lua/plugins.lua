@@ -7,7 +7,7 @@ return {
     end
   },
   'kyazdani42/nvim-web-devicons',
-  { 'numToStr/Comment.nvim',  config = true, lazy = true },
+  { 'numToStr/Comment.nvim',  config = true },
   { 'kylechui/nvim-surround', lazy = true },
   {
     'folke/todo-comments.nvim',

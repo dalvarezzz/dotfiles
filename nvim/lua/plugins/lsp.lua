@@ -14,6 +14,7 @@ return {
           astro = {},
           cssls = {},
           gopls = {},
+          clangd = {},
           tsserver = {},
           dockerls = {},
           rust_analyzer = {},
