@@ -1,5 +1,8 @@
 return {
-  'L3MON4D3/LuaSnip',
+  {
+    'L3MON4D3/LuaSnip',
+    event = "VeryLazy"
+  },
   {
     "echasnovski/mini.pairs",
     event = "VeryLazy",
@@ -64,7 +67,7 @@ return {
         }, {
           name = 'buffer'
         }),
-        cmdline
+        -- cmdline
       }
     end
   },

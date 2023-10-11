@@ -28,19 +28,6 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-local in_tmux = os.getenv("TMUX") ~= nil
-
-if in_tmux then
-  vim.g.clipboard = {
-    name = 'tmux copypaste',
-    copy = { ["+"] = { "tmux", 'load-buffer', '-' },["*"] = { "tmux", 'load-buffer', '-' } },
-    paste = { ["+"] = { "nvim_paste" },["*"] = { "nvim_paste" } },
-    cache_enabled = true
-  }
-else
-  vim.g.clipboard = { 'unnamedplus' }
-end
-
 vim.g.mapleader = ' '
 -- Disable default netrw
 -- vim.g.loaded_netrw = 1
