@@ -30,5 +30,5 @@ return {
     end
   },
   'stevearc/dressing.nvim',
-  'windwp/nvim-ts-autotag'
+  'windwp/nvim-ts-autotag',
 }
