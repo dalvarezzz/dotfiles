@@ -5,34 +5,34 @@ return {
   keys = {
     {
       '<C-p>',
-      function()
-        require('telescope.builtin').git_files()
+      function(opts)
+        require('telescope.builtin').git_files(opts)
       end,
       "Search git files"
     },
     { '<leader>pf',
-      function()
-        require('telescope.builtin').find_files()
+      function(opts)
+        require('telescope.builtin').find_files(opts)
       end,
       "Search files in the current workdir"
     },
     {
       '<leader>ps',
-      function()
-        require('telescope.builtin').live_grep()
+      function(opts)
+        require('telescope.builtin').live_grep(opts)
       end
     },
     {
       '<leader>ss',
-      function()
-        require('telescope.builtin').treesitter()
+      function(opts)
+        require('telescope.builtin').treesitter(opts)
       end,
       "Search tree-sitter symbols"
     },
     {
       '<leader>pr',
-      function()
-        require('telescope.builtin').lsp_references()
+      function(opts)
+        require('telescope.builtin').lsp_references(opts)
       end
     },
     "Search LSP references"
