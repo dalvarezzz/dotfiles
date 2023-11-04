@@ -1,4 +1,4 @@
 local beautiful = require('beautiful')
-local theme = require("src.theme.theme")
+local theme = require("config.theme.theme")
 
 beautiful.init(theme)
