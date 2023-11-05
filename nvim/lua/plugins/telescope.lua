@@ -20,7 +20,8 @@ return {
       '<leader>ps',
       function(opts)
         require('telescope.builtin').live_grep(opts)
-      end
+      end,
+      "Search live grep"
     },
     {
       '<leader>ss',
@@ -33,8 +34,29 @@ return {
       '<leader>pr',
       function(opts)
         require('telescope.builtin').lsp_references(opts)
-      end
+      end,
+      "Search LSP references"
     },
-    "Search LSP references"
+    {
+      '<leader>pq',
+      function(opts)
+        require('telescope.builtin').diagnostics(opts)
+      end,
+      "Search diagnostics"
+    },
+    {
+      '<leader>po',
+      function(opts)
+        require('telescope.builtin').lsp_workspace_symbols(opts)
+      end,
+      "Search workspace LSP symbols"
+    },
+    {
+      '<leader>pp',
+      function(opts)
+        require('telescope.builtin').resume(opts)
+      end,
+      "Resume previous search"
+    }
   }
 }

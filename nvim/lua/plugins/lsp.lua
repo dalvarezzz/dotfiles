@@ -12,35 +12,17 @@ return {
       return {
         servers = {
           astro = {},
-          cssls = {},
-          gopls = {},
           clangd = {},
-          tsserver = {},
+          cssls = {},
           dockerls = {},
-          rust_analyzer = {},
-          svelte = {},
           eslint = {},
+          gopls = {},
+          jsonls = {},
+          lua_ls = {},
+          rust_analyzer = {},
           sqlls = {},
-          lua_ls = {
-            settings = {
-              Lua = {
-                completion = {
-                  showWords = 'Disable'
-                },
-                diagnostics = {
-                  globals = { 'vim' },
-                },
-                runtime = {
-                  version = 'LuaJIT',
-                },
-                workspace = {
-                  library = {
-                    vim.api.nvim_get_runtime_file('', true),
-                  }
-                }
-              },
-            }
-          }
+          svelte = {},
+          tsserver = {},
         }
       }
     end,
@@ -56,7 +38,7 @@ return {
       end
 
       on_attach(function(client, buffer)
-        local opts = { buffer = bufnr, remap = false }
+        local opts = { buffer = buffer, remap = false }
 
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
@@ -102,7 +84,7 @@ return {
 
       for server, server_opts in pairs(servers) do
         if server_opts then
-          server_opts = server_opts == true and {} or server_opts
+          -- server_opts = server_opts == true and {} or server_opts
           setup(server)
         end
       end

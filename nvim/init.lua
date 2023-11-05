@@ -10,6 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.lsp.set_log_level("debug")
 
 require('options')
 require('autocommands')
