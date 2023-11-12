@@ -34,5 +34,13 @@ return {
   {
     'yamatsum/nvim-cursorline',
     config = true
+  },
+  {
+    'norcalli/nvim-colorizer.lua',
+    opts = {
+      'lua',
+      'html',
+      'css'
+    }
   }
 }
