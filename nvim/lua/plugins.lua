@@ -31,4 +31,8 @@ return {
   },
   'stevearc/dressing.nvim',
   'windwp/nvim-ts-autotag',
+  {
+    'yamatsum/nvim-cursorline',
+    config = true
+  }
 }
