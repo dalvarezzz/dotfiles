@@ -1,4 +1,4 @@
-# Dasdavidd's
+# Monoinfinito's dotfiles
 
 ```
       ██            ██     ████ ██  ██
@@ -11,9 +11,10 @@
  ░░░░░░  ░░░░░░     ░░    ░░   ░░ ░░░  ░░░░░░ ░░░░░░
 ```
 
-* [bspwm](./bspwm/bspwmrc)
-* [sxhkd](./sxhkd/sxhkdrc)
-* [polybar](./polybar/config)
-* [tmux](./tmux/tmux.conf)
-* [nvim](./nvim/init.vim)
 * [alacritty](./alacritty/alacritty.yml)
+* [awesomewm](./awesome/rc.lua)
+* [bspwm](./bspwm/bspwmrc)
+* [nvim](./nvim/init.lua)
+* [polybar](./polybar/config)
+* [sxhkd](./sxhkd/sxhkdrc)
+* [tmux](./tmux/tmux.conf)
