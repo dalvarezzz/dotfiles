@@ -3,13 +3,13 @@ local awful = require("awful")
 local gears = require("gears")
 
 local keys = {
-  taglist_keys = {},     -- Tag specific key mappings
-  taglist_buttons = {},  -- Mouse buttons on tags
-  global_keys = {},      -- Global key mappings
-  client_keys = {},      -- Client aka windows/programns key mappings
   client_buttons = {},   -- Client aka windows/programns mouse buttons
-  tasklist_keys = {},    -- Bar key mappings
+  client_keys = {},      -- Client aka windows/programns key mappings
+  global_keys = {},      -- Global key mappings
+  taglist_buttons = {},  -- Mouse buttons on tags
+  taglist_keys = {},     -- Tag specific key mappings
   tasklist_buttons = {}, -- Bar mouse buttons
+  tasklist_keys = {},    -- Bar key mappings
 }
 
 -- Title bar button mappings. It's a function because these buttons are declared inside a signal's exe_callback
@@ -28,6 +28,7 @@ keys.titlebar_buttons = function(c)
   )
 end
 
+-- Key mappings to deal with clients aka windows
 keys.client_keys = gears.table.join(
   keys.client_keys,
   awful.key({ user.modkey, }, "f",
@@ -73,6 +74,7 @@ keys.client_keys = gears.table.join(
     { description = "(un)maximize horizontally", group = "client" })
 )
 
+-- Mouse buttons mappings for clients
 keys.client_buttons = gears.table.join(
   keys.client_buttons,
   awful.button({}, 1, function(c)
