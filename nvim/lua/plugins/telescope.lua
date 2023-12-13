@@ -6,9 +6,9 @@ return {
     {
       '<C-p>',
       function(opts)
-        require('telescope.builtin').git_files(opts)
+        require('telescope.builtin').buffers(opts)
       end,
-      "Search git files"
+      "Search previous used buffers"
     },
     { '<leader>pf',
       function(opts)

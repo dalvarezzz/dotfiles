@@ -12,7 +12,7 @@ return {
   {
     'folke/todo-comments.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
-    lazy = true,
+    config = true
   },
   {
     'folke/tokyonight.nvim',
@@ -41,6 +41,14 @@ return {
       'lua',
       'html',
       'css'
+    }
+  },
+  {
+    "folke/zen-mode.nvim",
+    opts = {
+      window = {
+        width = .75
+      }
     }
   }
 }
