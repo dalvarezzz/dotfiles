@@ -1,27 +1,11 @@
 {
-  "diagnostics": {
-    "groupFileStatus": {
-      "ambiguity": "Any",
-      "await": "Any",
-      "duplicate": "Any",
-      "global": "Any",
-      "luadoc": "Any",
-      "redefined": "Any",
-      "strict": "Any",
-      "type-check": "Any",
-      "unbalanced": "Any",
-      "unused": "Any"
-    },
-    "ignoredFiles": "Opened",
-    "libraryFiles": "Opened"
-  },
-  "completion": {
-    "showWords": "Disable"
-  },
-  "runtime": {
-    "version": "LuaJIT",
-    "path": [
-      "lua/?"
-    ]
-  }
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "runtime.version": "Lua 5.4",
+  "runtime.pathStrict": false,
+  "workspace.library": [
+    "/usr/share/nvim/runtime"
+  ],
+  "diagnostics.globals": [
+    "vim"
+  ]
 }
