@@ -1,4 +1,4 @@
-# Monoinfinito's dotfiles
+# Dasdavid's dotfiles
 
 ```
       ██            ██     ████ ██  ██
