@@ -50,5 +50,10 @@ return {
         width = .75
       }
     }
+  },
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   }
 }

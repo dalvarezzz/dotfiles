@@ -20,25 +20,6 @@ return {
           astro = {},
           clangd = {},
           cssls = {},
-          denols = {
-            single_file_support = true,
-            root_dir = nvim_lsp.util.root_pattern("deno.json"),
-            init_options = {
-              enable = true,
-              lint = true,
-              suggest = {
-                autoImports = true,
-                imports = {
-                  autoDiscover = true,
-                  hosts = {
-                    ["https://crux.land"] = true,
-                    ["https://deno.land"] = true,
-                    ["https://x.nest.land"] = true
-                  }
-                }
-              }
-            }
-          },
           dockerls = {},
           eslint = {
             root_dir = nvim_lsp.util.root_pattern("package.json")
