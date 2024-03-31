@@ -1,7 +1,9 @@
 return {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.4',
-  dependencies = 'nvim-lua/plenary.nvim',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+  },
   config = {
     defaults = {
       file_ignore_patterns = { "node_modules" }
@@ -15,7 +17,8 @@ return {
       end,
       "Search previous used buffers"
     },
-    { '<leader>pf',
+    {
+      '<leader>pf',
       function(opts)
         require('telescope.builtin').find_files(opts)
       end,
@@ -31,9 +34,9 @@ return {
     {
       '<leader>ss',
       function(opts)
-        require('telescope.builtin').treesitter(opts)
+        require('telescope.builtin').lsp_document_symbols(opts)
       end,
-      "Search tree-sitter symbols"
+      "Search LSP document symbols"
     },
     {
       '<leader>pr',
