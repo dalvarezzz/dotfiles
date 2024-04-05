@@ -1,4 +1,5 @@
 return {
+  { "folke/neodev.nvim", opts = {} },
   {
     'j-hui/fidget.nvim',
     config = true,
@@ -13,6 +14,7 @@ return {
       'lukas-reineke/indent-blankline.nvim',
     },
     opts = function()
+      require('neodev').setup()
       local nvim_lsp = require('lspconfig')
 
       return {
