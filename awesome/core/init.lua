@@ -1,4 +1,4 @@
-require("awful.autofocus")
+require('awful.autofocus')
 
 require('core.rules')
 require('core.signals')
