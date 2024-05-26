@@ -62,6 +62,7 @@ return {
       'astro',
       'c',
       'css',
+      'dart',
       'go',
       'html',
       'javascript',

@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 --   pattern = '*'
 -- })
 
+-- Save the previous cursor position
 vim.api.nvim_create_autocmd('BufReadPost', {
   callback = function ()
     local line = vim.fn.line([['"]])

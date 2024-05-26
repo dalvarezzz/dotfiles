@@ -55,5 +55,12 @@ return {
     'stevearc/oil.nvim',
     opts = {},
     dependencies = { "nvim-tree/nvim-web-devicons" },
-  }
+  },
+  -- {
+  --   dir = "~/projects/declassify.nvim",
+  --   name = "declassify",
+  --   config = function ()
+  --     require('declassify').setup()
+  --   end
+  -- }
 }

@@ -22,10 +22,9 @@ return {
           astro = {},
           clangd = {},
           cssls = {},
+          dartls = {},
           dockerls = {},
-          eslint = {
-            root_dir = nvim_lsp.util.root_pattern("package.json")
-          },
+          eslint = { root_dir = nvim_lsp.util.root_pattern("package.json") },
           gopls = {},
           jsonls = {},
           lua_ls = {},
@@ -71,10 +70,10 @@ return {
         vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, options)
         vim.keymap.set('n', ']d', vim.diagnostic.goto_next, options)
         vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, options)
-        vim.keymap.set('n', '<leader>ff',
-          function()
-            vim.lsp.buf.format({ async = true })
-          end, options)
+        -- vim.keymap.set('n', '<leader>ff',
+        --   function()
+        --     vim.lsp.buf.format({ async = true })
+        --   end, options)
       end)
 
       local servers = opts.servers

@@ -65,6 +65,19 @@ return {
         require('telescope.builtin').resume(opts)
       end,
       "Resume previous search"
+    },
+    {
+      '<leader>pc',
+      function(opts)
+        require('telescope.builtin').grep_string(opts)
+      end,
+      "Search the word under the cursor"
+    },
+    {
+      '<leader>ff',
+      function (opts)
+        require('telescope.builtin').current_buffer_fuzzy_find(opts)
+      end
     }
   }
 }
