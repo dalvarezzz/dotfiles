@@ -6,14 +6,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
 })
 
--- Format on write
--- local format_on_write_group = vim.api.nvim_create_augroup('FormatOnWrite', { clear = true })
--- vim.api.nvim_create_autocmd('BufWritePre', {
---   command = 'lua vim.lsp.buf.format({ async = false })',
---   group = format_on_write_group,
---   pattern = '*'
--- })
-
 -- Save the previous cursor position
 vim.api.nvim_create_autocmd('BufReadPost', {
 	callback = function()
@@ -21,5 +13,21 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 		if line > 0 and line <= vim.fn.line('$') then
 			vim.cmd([[normal! g`"]])
 		end
+	end,
+})
+
+-- Disable treesitter's textobject select and lookahead for dart files
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+	pattern = { 'dart' },
+	callback = function()
+		require('nvim-treesitter.configs').setup({
+			ensure_installed = 'dart',
+			textobjects = {
+				select = {
+					enable = false,
+					lookahead = false,
+				},
+			},
+		})
 	end,
 })

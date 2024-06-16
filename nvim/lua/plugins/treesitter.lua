@@ -42,6 +42,9 @@ return {
 				},
 			},
 			select = {
+				-- WARN: for some reason, dart files takes eons to open when `enable = true`. Also `lookahead = true` seems to make things worse.
+				-- In `autocommands.lua` we disable it when the fileext is `.dart`
+				-- @link https://github.com/nvim-treesitter/nvim-treesitter-textobjects/issues/461
 				enable = true,
 				lookahead = true,
 				keymaps = {
