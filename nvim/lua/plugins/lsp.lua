@@ -58,12 +58,7 @@ return {
 				vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, options)
 				vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, options)
 				vim.keymap.set('n', '<leader>ws', vim.lsp.buf.workspace_symbol, options)
-				vim.keymap.set(
-					'n',
-					'<leader>wl',
-					function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-					options
-				)
+				vim.keymap.set('n', '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, options)
 				vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, options)
 				vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, options)
 				vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, options)
